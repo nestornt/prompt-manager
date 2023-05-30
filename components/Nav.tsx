@@ -4,10 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, MouseEventHandler, ReactNode } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { User } from 'next-auth';
 
 const Nav = () => {
 
   const { data: session, status } = useSession();
+  const user = session?.user as User;
+  
   const [providers, setProviders] = useState<any>(null);
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 

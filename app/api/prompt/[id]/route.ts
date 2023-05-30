@@ -20,8 +20,6 @@ export const GET = async (req: any, { params }: any) => {
 
 export const PATCH = async (req: any, { params }: any) => {
   const { prompt, tag } = await req.json();
-  console.log("🚀 ~ file: route.ts:23 ~ PATCH ~ tag:", tag)
-  console.log("🚀 ~ file: route.ts:23 ~ PATCH ~ prompt:", prompt)
   
   try {
     await connectToDB();

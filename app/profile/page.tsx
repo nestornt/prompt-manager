@@ -4,26 +4,25 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react'
 import Profile from '@components/Profile';
-import { Session } from 'next-auth';
+import { User } from 'next-auth';
 
 const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  const user = session?.user as User;
+  
   const [posts, setPosts] = useState([]);
 
   
   useEffect(() => {
     const fetchPosts = async () => {
       if (session?.user) {
-        const response = await fetch(`/api/users/${session?.user.id}/posts`);
+        const response = await fetch(`/api/users/${user?.id}/posts`);
         const data = await response.json();
         setPosts(data);
       }
     }
-
-    console.log(posts)
-    console.log("🚀 ~ file: page.tsx:26 ~ useEffect ~ session?.user:", session?.user)
-    if (session?.user.id) fetchPosts();
+    if (user?.id) fetchPosts();
   }, []);
 
   const handleEdit = (post: any) => {
