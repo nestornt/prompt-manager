@@ -35,8 +35,6 @@ const Nav = () => {
         <p className='logo_text'>Prompt Manager</p>
       </Link>
 
-      {console.log(session?.user) as ReactNode}
-
       {/* Desktop Nav */}
       <div className='sm:flex hidden'>
         {session?.user ? (

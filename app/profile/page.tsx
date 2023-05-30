@@ -3,8 +3,9 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react'
-import Profile from '@components/Profile';
 import { User } from 'next-auth';
+
+import Profile from '@components/Profile';
 
 const MyProfile = () => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const MyProfile = () => {
       }
     }
     if (user?.id) fetchPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleEdit = (post: any) => {
